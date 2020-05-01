@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>
+        <title>Events</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>                                
+        <link rel="stylesheet" href="takeaseatcss.css"></link>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>   
+    </h:head>
+    <body>
+        <h:form id="neweventform" enctype="multipart/form-data">
+            <div class="container-fluid">
+
+                <div class="row content"> 
+
+                    <div class="col-sm-12 well-navbar" >
+                       <div>
+                            <a href="#"></a>                            
+                            <a href="#"><span class="glyphicon glyphicon-lamp"></span> Welcome to Take a Seat! Create your own event, or browser through people's creations</a><br/>
+                            <a href="#"><h:commandLink id="logout" action="#{loginBean.doLogout()}">...Or LOGOUT and come back later...</h:commandLink></a>      
+                        </div>  
+                    </div>
+
+                    <div class="col-sm-3 sidenav">                      
+                        <ul class="nav nav-pills nav-stacked text-center">
+                            <h:form>
+                                <br/><br/>
+                                <p:graphicImage value="#{loginBean.profile.profilePicture}" class="team-logo"/>
+                                <br/><br/>
+                                <li><h4>#{loginBean.profile.profileName}'s Take a Seat</h4></li>
+                                <li></li>
+                                <li></li>
+                                <br/>
+                                <li><p:graphicImage name="/userhome/windows.png" class="team-logo"/></li>
+                                <li>Browse events</li>
+                                <li>___________________________</li>
+                                <li><p:commandButton value=" All Events" action="#{eventBean.listAllEvents()}" styleClass="styleButton" icon="fa fa-list" style="width:200px;height:30px"/></li>                                
+                                <li><p:commandButton value=" View Cart of tickets" action="#{cartBean.goToViewCartPage()}" styleClass="styleButton" icon="fa fa-shopping-cart" style="width:200px;height:30px"/></li>
+                                <li><p:commandButton value=" Purchased tickets" action="#{ticketBean.goToUserBoughEventsPage()}" styleClass="styleButton" icon="fa fa-rub " style="width:200px;height:30px"/></li>
+                                <li>___________________________</li>
+                                <br/><br/>
+                                <li><p:graphicImage name="/userhome/calendar.png" class="team-logo"/></li>
+                                <li>Events workshop</li>
+                                <li>___________________________</li>
+                                <li><p:commandButton value=" Create New Event" action="#{eventBean.goToNewEventPage()}" styleClass="styleButton" icon="fa fa-plus-square " style="width:200px;height:30px"/></li>
+                                <li><p:commandButton value=" My Created Events" action="#{eventBean.userEventsCreatedPage()}" styleClass="styleButton" icon="fa fa-folder-open" style="width:200px;height:30px"/></li>
+                                <li><p:commandButton value=" My Report" action="UserReport.xhtml" icon="fa fa-bar-chart" styleClass="styleButton" style="width:200px;height:30px"/></li>
+                                <li>___________________________</li>
+                                <br/><br/>
+                                <li></li>
+                                <li><p:graphicImage name="/userhome/settings-color.png" class="team-logo"/></li>
+                                <li>Settings</li>
+                                <li>___________________________</li>
+                                <li><p:commandButton value=" Edit settings" action="#{profileBean.goToEditProfilePage()}" styleClass="styleButton" icon="fa fa-cog" style="width:200px;height:30px"/></li>
+                                <li>___________________________</li>
+                                <br/><br/>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li>Take a Seat, by Team Double Double Mafia</li>
+                                <li><p:graphicImage name="/userhome/ddm.png" class="team-logo"/></li>
+                                <!-- Add a description of the team, with the member's names -->
+                                <li>___________________________</li>
+                            </h:form>
+                        </ul><br/>  
+                    </div>                    
+
+                    <div class="col-sm-9 " >
+                        <p:breadCrumb class="fillAllContentRight">
+                            <p:menuitem value="Categories" url="UserIndex.xhtml" />
+                            <p:menuitem value="All Events" url="#{eventBean.listAllEvents()}" />
+                            <p:menuitem value="Event #{eventBean.event.eventName}" url="#" />
+                        </p:breadCrumb>
+
+
+                        <div class="row well fillAllContentRight">
+                            <div class="col-sm-4">
+                                <h4>#{eventBean.event.eventName}</h4>
+                                <p:graphicImage value="#{eventBean.event.bannerImage}" />
+                            </div>
+                            <div class="col-sm-4">
+                                <h4>The Creator</h4>
+                                <p:commandLink action="#{profileBean.goToViewProfilePage()}">
+                                    <p:graphicImage value="#{eventBean.event.eventCreatorProfilePicture}" />
+                                </p:commandLink>
+                                <p:link id="profile_link" outcome="#{profileBean.goToViewProfilePage()}" value="#{eventBean.event.author}"/>
+                            </div>
+                            <div class="col-sm-4">
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <strong>Brought to you by: </strong>  <h:outputText value="#{eventBean.event.sponsors}" />
+                                    <strong>Location: </strong> <h:outputText value="#{eventBean.event.city}, #{eventBean.event.state}, #{eventBean.event.country}" />
+                                    <strong>Date: </strong><h:outputText value="#{eventBean.event.date} at #{eventBean.event.eventStartTime}" />
+                                    <strong>Gates open at: </strong><h:outputText value="#{eventBean.event.doorsOpenTime}" />
+                                </h:panelGrid>
+                            </div>
+                        </div>
+
+
+                        <div class="row well fillAllContentRight">
+                            <div class="col-sm-4">
+                                <div class="well">
+                                    <h4>Structure of the event</h4>
+                                    <p:graphicImage value="#{eventBean.event.overviewImage}" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-7">
+                                <div class="row well">
+                                    <h4>About the event</h4>
+                                    <p><h:outputText value="#{eventBean.event.description}" /></p> 
+                                </div>
+
+                                <div class="row well">
+                                    <h4>Select how many tickets you want</h4>
+                                    <h:dataTable class="table" value="#{eventBean.sectors}" var="s" width="100%">
+                                        <h:column>
+                                            <f:facet name="header" >Sector</f:facet>
+                                                #{s.sectorName}
+                                        </h:column>            
+                                        <h:column>
+                                            <f:facet name="header">Adult (Qty.)</f:facet>
+                                            $ #{s.ticketAdultPrice}
+
+                                            <p:commandButton value="-" actionListener="#{s.decrementAdultTicketsSelected()}" update="adult" />
+                                            <h:outputText id="adult" value="#{s.adultTicketsSelected}" />
+                                            <p:commandButton value="+" actionListener="#{s.incrementAdultTicketsSelected()}" update="adult" />
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Student/Senior (Qty.)</f:facet>
+                                            $ #{s.ticketSeniorStudentPrice}
+
+                                            <p:commandButton value="-" actionListener="#{s.decrementStudentAndSeniorTicketsSelected()}" update="studentAndSenior" />
+                                            <h:outputText id="studentAndSenior" value="#{s.studentAndSeniorTicketsSelected}" />
+                                            <p:commandButton value="+" actionListener="#{s.incrementStudentAndSeniorTicketsSelected()}" update="studentAndSenior" />
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">Children (Qty.)</f:facet>
+                                            $ #{s.ticketChildrenPrice}
+
+                                            <p:commandButton value="-" actionListener="#{s.decrementChildrenTicketsSelected()}" update="children" />
+                                            <h:outputText id="children" value="#{s.childrenTicketsSelected}" />
+                                            <p:commandButton value="+" actionListener="#{s.incrementChildrenTicketsSelected()}" update="children" />
+                                        </h:column>
+                                    </h:dataTable>
+
+                                    <p:commandButton value="Add tickets to Cart" action="#{eventBean.addItemsToCart()}" icon="fa fa-shopping-cart" style="width:200px;height:30px"/>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <p:dialog header="Event Code" widgetVar="previewdialog" minHeight="40">
+                            <h:form>
+                                <h:outputText value="#{eventBean.event.eventCode}" />
+                            </h:form>
+                        </p:dialog>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="container-fluid">
+                <p>Double Double Mafia team is a group made for Java EE classes, being the components Gabriel, Abinodh and Preethi</p>
+            </footer>
+        </h:form>
+    </body>
+</html>

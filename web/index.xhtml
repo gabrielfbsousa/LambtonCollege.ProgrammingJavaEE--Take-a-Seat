@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+    <view contentType="text/html">
+    </view>
+
+    <head>
+        <title>DenTOP</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- Import to use Font Lato -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+
+        <!-- Box Slider dependencies -->
+        <script src="js/jquery.bxslider.min.js"></script>
+        <link href="css/jquery.bxslider.css" rel="stylesheet"/>
+
+        <!-- Gabriel menu bar plugin -->
+        <script src="js/gabriel-menu-plugin.js"></script>
+
+        <!-- iPicture dependencies -->
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="css/jQuery.iPicture.css" />
+        <script type="text/javascript" src="js/jQuery.iPicture.js"></script>
+
+        <link rel="stylesheet" href="index.css" />
+        <script src="index.js"></script>
+    </head>
+
+    <body>
+        <h:form>
+            <!-- Menu and Navbar-->
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="#"><img src="resources/userhome/takeaseat-letras.png"/></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="DenTOPnavbar">
+                        <ul class="nav navbar-nav navbar-right" id="menu_plugin">                            
+                            <li><a href="#whatIsIt">CREATE EVENTS</a></li>
+                            <li><a href="#features">MANAGE WITH QR CODE</a></li>
+                            <li><a href="#HowDoesItWork">PURCHASE TICKETS</a></li>
+                            <li><a href="#accesseverywhere">BENEFITS</a></li>
+                            <li><a href="#credits">TAKE A LOOK</a></li>
+                            <li><h:commandLink id="current" action="login">LOGIN/SIGN UP</h:commandLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <!-- Title -->
+            <div id="startingPoint" class="jumbotron bg-blue text-center">
+                <img src="resources/userhome/takeaseatlogo.png" alt="logo"/>
+                <h2>Introducing <strong>Take a Seat</strong></h2>
+                <p>By Double Double Mafia</p>
+                <br/><br/>
+                <p>A web system created for you to <strong>create</strong>, <strong>sell</strong> and <strong>buy</strong> events</p>
+                <br/><br/>
+                <div>
+                    <img src="resources/index/print-from-screen-bigger.png" alt="system-print" width="80%" heigth="80%"/>
+                </div>
+            </div>
+
+            <!-- Home -->
+            <div class="bg-black">
+
+                <div id="home" class="bg-black main-padding">
+                    <!-- Welcome to the Future -->
+                    <div id="whatIsIt" class="container-fluid bg-default">
+                        <div class="row">
+                            <div class="col-sm-6 slideanim">
+                                <h2>CREATE YOUR EVENT <strong>JUST AS IT IS</strong></h2><br/>
+                                <h4><strong>For complexes or simple events</strong>, Take a Seat can simplify your organization, and make you focus on the physical preparation of it!</h4><br/>
+                                <p>Give specific information about your event. Chose a date, say when it starts, and when your customers can already get into it. Show sponsors. With
+                                    Take a Seat, you can even upload a structure of your event, showing your customers the location of each sector.</p>
+                            </div>
+                            <div class="col-sm-6 slideanim">
+                                <img src="resources/index/create.png" alt="Schedule Overlapping" width="90%" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Your team -->
+                    <div id="YourTeam" class="container-fluid bg-grey">
+                        <div class="row">
+                            <div class="col-sm-6 slideanim">
+                                <img src="resources/index/manage.png" alt="Schedule Overlapping" width="90%"/>
+                            </div>
+                            <div class="col-sm-6 slideanim">
+                                <h2>TAKE A SEAT<strong> TAKES CARE OF YOUR TICKETS</strong></h2><br/>
+                                <h4><strong>It doesn't matter if you are selling or buying tickets.</strong> With take a seat and our mobile app, just bring the QR Code to the entrance, and you are good to go!</h4><br/>
+                                <p> In order to help you to organize your event better, Take a Seat presents a concept of QR Code ticket. Your customer doesn't need to bring a paper with all the information. Just
+                                    print your screen with the QR Code at the Purchased Events session, and you can validate your customer's ticket at the entrance of your event</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customers -->
+                    <div id="Customers" class="container-fluid bg-default">
+                        <div class="row">
+                            <div class="col-sm-6 slideanim">
+                                <h2>BUY <strong>THE WAY YOU LIKE</strong></h2><br/>
+                                <h4><strong>Browse and buy easy. </strong>With Take a Seat, you have dozens of events of your interest, easily reachable.</h4><br/>
+                                <p>With our system, you can login, manage your profile, browse through events that may interest you, and buy tickets for wherever you want to go! Easy and simple!
+                                    You can also take a look at the creator of the event, to see other events created by that person!</p>
+                            </div>
+                            <div class="col-sm-6 slideanim">
+                                <img src="resources/index/buy.png" alt="Schedule Overlapping" width="90%"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div id="features" class="container-fluid text-center bg-grey ">
+                        <h2>WHAT YOU CAN GET FROM TAKE A SEAT</h2>
+                        <br/>
+                        <div class="row slideanim">
+                            <div class="col-sm-4">
+                                <p:graphicImage name="/index/features/calendar.png" class="features-logo"/>
+                                <h4>CREATE A NEW EVENT</h4>
+                                <p>You can create your event, so everybody can see it</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p:graphicImage name="/index/features/seat.png" class="features-logo"/>
+                                <h4>ORGANIZE SEATS</h4>
+                                <p>Configure the quantity of seats and sectors for your event</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p:graphicImage name="/index/features/world.png" class="features-logo"/>
+                                <h4>PUBLICIZE YOUR EVENT</h4>
+                                <p>Make your event known</p>
+                            </div>
+                        </div>
+                        <br/><br/>
+                        <div class="row slideanim">
+                            <div class="col-sm-4">
+                                <p:graphicImage name="/index/features/list.png" class="features-logo"/>
+                                <h4>BROWSE EVENTS</h4>
+                                <p>You can look for events from your interest easily</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p:graphicImage name="/index/features/buy-online.png" class="features-logo"/>
+                                <h4>CHECKOUT</h4>
+                                <p>Guarantee your seat on the events you like</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p:graphicImage name="/index/features/qr-code.png" class="features-logo"/>
+                                <h4>EASY ACCESS</h4>
+                                <p>Use our mobile app to validate the tickets</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interface -->
+                    <div id="Interface" class="container-fluid bg-default text-center">
+                        <div class="row">
+                            <div id="iPicture" class="col-sm-12 slideanim">
+                                <h2>INTERFACE</h2>
+                                <h4>Take a look at the interface of Take a Seat, when creating an event</h4><br/><br/>
+                                <div class="slide">
+                                    <div id="picture1" style="background: url('resources/index/print-from-interface.png') no-repeat scroll 0 0 #393737; width: 1225px; height: 662px;position: relative; margin:0 auto;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Home -->
+            </div>
+
+
+
+            <!-- Footer -->
+            <footer id="credits" class="container-fluid text-center">
+                <a href="#myPage" title="To Top">
+                    <span class="glyphicon glyphicon-chevron-up"></span>
+                </a>
+                <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+            </footer>
+        </h:form>
+    </body>
+
+</html>

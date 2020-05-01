@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 15, 2017, 10:53:41 PM
+    Author     : Gabriel
+*/
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+
+li {
+    color: white;
+}
+
+.row.content {height: 1000px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+    background-color: #213540;
+    height: 100%;
+    width: 260px;
+}
+
+.well-navbar {
+    padding-top: 5px;
+    background-color: #1C2E38;                
+    height: 50px;
+    width: 100%;
+}
+
+p #profile_link{
+    color: black;
+}
+
+a {
+    color: white;
+}
+
+body {
+    color: black;
+}
+
+
+.navigationbar {
+    background-color: #213540;
+    height: 100px;
+    width: 100%;
+}
+
+.fillAllContentRight {
+    width: 110%;
+    margin-left: 0px;
+}
+
+
+/* Set black background color, white text and some padding */
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {height: auto;} 
+}
+
+form .styleButton {    
+    background-color: white;
+    font-family: Arial,Helvetica,sans-serif;
+    border: none;  
+    border-radius: 0px;
+    /*color:white;*/
+}

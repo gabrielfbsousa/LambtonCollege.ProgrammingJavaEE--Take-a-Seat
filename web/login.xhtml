@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"    
+      xmlns:p="http://primefaces.org/ui">  
+    <style>
+        .ui-tabs .ui-tabs-nav {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        .ui-tabs .ui-tabs-nav li {
+            float: none !important;
+            display: inline-block;
+        }
+
+        .form{ 
+            background: rgba(19, 35, 47, 0.9); 
+            padding: 40px;
+            max-width: 600px;
+            margin: 40px auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+        }
+        .tab-group {
+            list-style:none;
+            padding:0;
+            margin:0 0 40px 0;
+
+        }
+
+
+        .aligncentered {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            margin-top:250px;
+            left: 35%;
+        }
+    </style>
+    <h:head>
+        <title>Sign-Up/Login Form</title>
+    </h:head> 
+    <h:form>
+
+        <h:body style="background-image: url(#{request.contextPath}/resources/login/show-background.jpg);font-family: 'Titillium Web', sans-serif; ">
+            <p:growl id="growl" life="2000" />
+            <p:tabView class="aligncentered" style="width: 400px;height: 270px; border-radius: 9px; box-shadow: 0 4px 10px 4px ; ">
+                <p:tab title="Login" >
+                    <br>Welcome Back!</br>
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Username: *" />
+                        <p:inputText value="#{loginBean.login}" required="false" label="Login"/>
+
+                        <h:outputText value="Password: *" />
+                        <p:password value="#{loginBean.password}" required="false" label="Password"/>
+
+                        <br/>
+
+                        <h:commandButton value="Login" action="#{loginBean.doLogin()}" style="background-color:#1ab188; width:100%; font-size: 1.5rem; padding:12px 0;
+                                         -webkit-transition:all 0.5s ease; transition: all 0.5s ease;  color: white; letter-spacing: .01em;"/>
+
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Register">
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Username: *" />
+                        <p:inputText value="#{loginBean.newUserLogin}" required="false" label="Login"/>
+
+                        <h:outputText value="Password: *" />
+                        <p:password value="#{loginBean.newUserPassword}" required="false" label="Password"/>
+
+                        <h:outputText value="Confirm Password: " />
+                        <p:password value="#{loginBean.newUserConfirmPassword}" required="false" label="ConfirmPassword"/>
+
+                        <br/>
+
+                        <h:commandButton value="Create Account" action="#{loginBean.createNewAccount()}" style="background-color:#1ab188; width:100%; font-size: 1.5rem; padding:12px 0;
+                                         -webkit-transition:all 0.5s ease; transition: all 0.5s ease;  align-content: center; color: white; letter-spacing: .01em;"/>
+
+                    </h:panelGrid>
+                </p:tab>
+            </p:tabView>
+        </h:body>
+    </h:form>
+</html>
+

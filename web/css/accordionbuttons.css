@@ -1,0 +1,63 @@
+.button {
+    width: 100%;
+    background-color: white;
+    color: black;
+    border: 2px solid #3B6793;
+    border-radius: 8px;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+
+}
+
+
+
+.level1:hover { /*  CEO */
+    background-color: #203864;
+    color: white;
+}
+
+.level2:hover { /*  Senior Manager */
+    background-color: #1F4E79;
+    color: white;
+}
+
+.level3:hover {/*  Architecs - Project Managers */
+    background-color: #2F5597;
+    color: white;
+}
+
+.level4:hover {/*  Tech Leader - Team Leader - Business Analyst */
+    background-color: #2E75B6;
+    color: white;
+}
+
+.level5:hover {/*  Senior: SW Engineering - Quality Assurance - Developer */
+    background-color: #8FAADC;
+    color: white;
+}
+
+.level6:hover {/*  SW Engineering - QA Engineering - Development Supervisor */
+    background-color: #9DC3E6;
+    color: white;
+}
+
+.level7:hover {/*  Associate: SW Engineering, QA Engineering - Jr. Developer, Business Analyst */
+    background-color: #B4C7E7;
+    color: white;
+}
+
+#accordion div {
+display: none;
+}
+
+#accordion div#show {
+display: block;
+}

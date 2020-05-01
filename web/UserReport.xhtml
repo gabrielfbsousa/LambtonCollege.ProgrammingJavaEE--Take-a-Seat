@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">  
+    <h:head>
+        <title>User Report</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="takeaseatcss.css"></link>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>        
+    </h:head>
+    <body>
+        <h:form>                   
+            <p:growl id="growl" life="2000" />
+            <div class="container-fluid">
+
+                <div class="row content"> 
+
+                    <div class="col-sm-12 well-navbar" >
+                        <div>
+                            <a href="#"></a>                            
+                            <a href="#"><span class="glyphicon glyphicon-lamp"></span> Welcome to Take a Seat! Create your own event, or browser through people's creations</a><br/>
+                            <a href="#"><h:commandLink id="logout" action="#{loginBean.doLogout()}">...Or LOGOUT and come back later...</h:commandLink></a>      
+                        </div>  
+                    </div>
+
+                    <div class="col-sm-3 sidenav">                      
+                        <ul class="nav nav-pills nav-stacked text-center">
+                            <h:form>
+                                <br/><br/>
+                                <p:graphicImage value="#{loginBean.profile.profilePicture}" class="team-logo"/>
+                                <br/><br/>
+                                <li><h4>#{loginBean.profile.profileName}'s Take a Seat</h4></li>
+                                <li></li>
+                                <li></li>
+                                <br/>
+                                <li><p:graphicImage name="/userhome/windows.png" class="team-logo"/></li>
+                                <li>Browse events</li>
+                                <li>___________________________</li>
+                                <li><p:commandButton value=" All Events" action="#{eventBean.listAllEvents()}" styleClass="styleButton" icon="fa fa-list" style="width:200px;height:30px"/></li>                                
+                                <li><p:commandButton value=" View Cart of tickets" action="#{cartBean.goToViewCartPage()}" styleClass="styleButton" icon="fa fa-shopping-cart" style="width:200px;height:30px"/></li>
+                                <li><p:commandButton value=" Purchased tickets" action="#{ticketBean.goToUserBoughEventsPage()}" styleClass="styleButton" icon="fa fa-rub " style="width:200px;height:30px"/></li>
+                                <li>___________________________</li>
+                                <br/><br/>
+                                <li><p:graphicImage name="/userhome/calendar.png" class="team-logo"/></li>
+                                <li>Events workshop</li>
+                                <li>___________________________</li>
+                                <li><p:commandButton value=" Create New Event" action="#{eventBean.goToNewEventPage()}" styleClass="styleButton" icon="fa fa-plus-square " style="width:200px;height:30px"/></li>
+                                <li><p:commandButton value=" My Created Events" action="#{eventBean.userEventsCreatedPage()}" styleClass="styleButton" icon="fa fa-folder-open" style="width:200px;height:30px"/></li>
+                                <li><p:commandButton value=" My Report" action="UserReport.xhtml" icon="fa fa-bar-chart" styleClass="styleButton" style="width:200px;height:30px"/></li>
+                                <li>___________________________</li>
+                                <br/><br/>
+                                <li></li>
+                                <li><p:graphicImage name="/userhome/settings-color.png" class="team-logo"/></li>
+                                <li>Settings</li>
+                                <li>___________________________</li>
+                                <li><p:commandButton value=" Edit settings" action="#{profileBean.goToEditProfilePage()}" styleClass="styleButton" icon="fa fa-cog" style="width:200px;height:30px"/></li>
+                                <li>___________________________</li>
+                                <br/><br/>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li>Take a Seat, by Team Double Double Mafia</li>
+                                <li><p:graphicImage name="/userhome/ddm-transparent.png" class="team-logo"/></li>
+                                <!-- Add a description of the team, with the member's names -->
+                                <li>___________________________</li>
+                            </h:form>
+                        </ul><br/>  
+                    </div>
+
+
+
+                    <div class="col-sm-9 " >                       
+                        <p:breadCrumb class="row well">
+                            <p:menuitem value="Categories" url="UserIndex.xhtml" />
+                            <p:menuitem value="My report" url="#" />                           
+                        </p:breadCrumb>
+
+                        <div class="row well">                          
+                            <h4>Tickets sold by event</h4>
+                            <p:chart type="bar" model="#{reportBean.ticketsSoldByEvent}" style="height:300px"/>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="well">
+                                    <h4>Number of events created</h4>
+                                    <p><h:outputText value="#{reportBean.quantityOfCreatedEvents}" /></p> 
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="well">
+                                    <h4>Number of tickets sold</h4>
+                                    <p><h:outputText value="#{reportBean.quantityOfSoldTickets}" /></p> 
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="well">
+                                    <h4>Total money raised on your events</h4>
+                                    <p><h:outputText value="$#{reportBean.moneyRaised}" /></p> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row well">
+                            <div class="col-sm-6">
+                                <div class="well">
+                                    <h4>Types of tickets sold by event</h4>
+                                    <p:chart type="pie" model="#{reportBean.ticketsDivisionPieChart}" style="width:400px;height:300px" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="well">
+                                    <h4>Evolution of quantity of tickets sold by event</h4>
+                                    <p:chart type="line" model="#{reportBean.eventsPopularityOverTime}" style="width:400px;height:300px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <footer class="container-fluid">
+                <p>Double Double Mafia team is a group made for Java EE classes, being the components Gabriel, Abinodh and Preethi</p>
+            </footer>
+        </h:form>
+    </body>
+</html>

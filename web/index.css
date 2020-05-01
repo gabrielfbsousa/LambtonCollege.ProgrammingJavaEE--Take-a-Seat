@@ -1,0 +1,145 @@
+.jumbotron {
+   background-color: #00004C;
+   color: #ffffff;
+   padding-top: 100px; 
+   padding-bottom: 0px;
+   margin-bottom:0px;
+}
+
+.bg-blue {
+    background-color: #333333;
+}
+
+.bg-menubar {
+  background-color: #386885;
+}
+
+.container-fluid {
+    padding: 60px 50px;
+}
+
+.bg-grey {
+    background-color: #f6f6f6;
+}
+
+.features-logo {
+    color: #f4511e;
+    font-size: 200px;
+}
+
+.bg-black {
+    background-color: #171717;
+}
+
+.bg-default {
+    background-color: #ffffff;
+}
+
+.main-padding {
+    padding-right: 80px;
+    padding-left: 80px;
+}
+        
+        
+label {
+    margin-left: 20em;
+    text-align: right;
+}
+input {
+    margin-right: 20em;
+    margin-bottom: .5em;
+}
+span {
+	color: red;
+}
+
+label.error {
+	color: red;
+}
+
+/* Make the slide down animation */
+.slideanim {visibility:hidden;}
+.slide {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+}
+
+
+
+/* Apply new Font */
+* {
+    font-family:'Lato', sans-serif;
+    font-style:condensed;
+}
+
+label {
+  display: inline-block;
+  width: 300px;
+  text-align: left;
+}​
+
+
+/* Apply Shadow in some elements */
+#moresoftware{
+  width: 350px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* Code to align image to center */
+  display: block;
+    margin: 0 auto;
+}
+
+#picture1{
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+#shadow {
+    width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+
+
+
+.startPointSettings {
+  width: 1208px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* Code to align image to center */
+  display: block;
+    margin: 0 auto;
+}
+
+/* GMaps settings */
+  #map {
+    width: 100%;
+    height: 400px;
+  }
+
+
+/* iPicture default settings */
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(70%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}

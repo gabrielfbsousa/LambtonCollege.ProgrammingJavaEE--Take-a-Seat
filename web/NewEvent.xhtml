@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>
+        <title>Create new event</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>                        
+        <link rel="stylesheet" href="takeaseatcss.css"></link>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>   
+        <script language="Javascript">
+            function hideNoSeat(x) {
+                if (x.checked) {
+                    document.getElementById("NoSeat").style.visibility = "hidden";
+                    document.getElementById("RowsAndSeats").style.visibility = "visible";
+                }
+            }
+
+            function hideRowsAndSeats(x) {
+                if (x.checked) {
+                    document.getElementById("RowsAndSeats").style.visibility = "hidden";
+                    document.getElementById("NoSeat").style.visibility = "visible";
+                }
+            }
+        </script>        
+
+    </h:head>
+    <body>
+        <h:form id="neweventform" enctype="multipart/form-data">
+            <div class="container-fluid">
+
+                <div class="row content"> 
+
+                    <div class="col-sm-12 well-navbar" >
+                       <div>
+                            <a href="#"></a>                            
+                            <a href="#"><span class="glyphicon glyphicon-lamp"></span> Welcome to Take a Seat! Create your own event, or browser through people's creations</a><br/>
+                            <a href="#"><h:commandLink id="logout" action="#{loginBean.doLogout()}">...Or LOGOUT and come back later...</h:commandLink></a>      
+                        </div>  
+                    </div>
+
+                    <div class="col-sm-3 sidenav">                      
+                        <ul class="nav nav-pills nav-stacked text-center">
+                            <h:form>
+                                <br/><br/>
+                                <p:graphicImage value="#{loginBean.profile.profilePicture}" class="team-logo"/>
+                                <br/><br/>
+                                <li><h4>#{loginBean.profile.profileName}'s Take a Seat</h4></li>
+                                <li></li>
+                                <li></li>
+                                <br/>
+                                <li><p:graphicImage name="/userhome/windows.png" class="team-logo"/></li>
+                                <li>Browse events</li>
+                                <li>___________________________</li>
+                                <li><p:commandButton value=" All Events" action="#{eventBean.listAllEvents()}" styleClass="styleButton" icon="fa fa-list" style="width:200px;height:30px"/></li>                                
+                                <li><p:commandButton value=" View Cart of tickets" action="#{cartBean.goToViewCartPage()}" styleClass="styleButton" icon="fa fa-shopping-cart" style="width:200px;height:30px"/></li>
+                                <li><p:commandButton value=" Purchased tickets" action="#{ticketBean.goToUserBoughEventsPage()}" styleClass="styleButton" icon="fa fa-rub " style="width:200px;height:30px"/></li>
+                                <li>___________________________</li>
+                                <br/><br/>
+                                <li><p:graphicImage name="/userhome/calendar.png" class="team-logo"/></li>
+                                <li>Events workshop</li>
+                                <li>___________________________</li>
+                                <li><p:commandButton value=" Create New Event" action="#{eventBean.goToNewEventPage()}" styleClass="styleButton" icon="fa fa-plus-square " style="width:200px;height:30px"/></li>
+                                <li><p:commandButton value=" My Created Events" action="#{eventBean.userEventsCreatedPage()}" styleClass="styleButton" icon="fa fa-folder-open" style="width:200px;height:30px"/></li>
+                                <li><p:commandButton value=" My Report" action="UserReport.xhtml" icon="fa fa-bar-chart" styleClass="styleButton" style="width:200px;height:30px"/></li>
+                                <li>___________________________</li>
+                                <br/><br/>
+                                <li></li>
+                                <li><p:graphicImage name="/userhome/settings-color.png" class="team-logo"/></li>
+                                <li>Settings</li>
+                                <li>___________________________</li>
+                                <li><p:commandButton value=" Edit settings" action="#{profileBean.goToEditProfilePage()}" styleClass="styleButton" icon="fa fa-cog" style="width:200px;height:30px"/></li>
+                                <li>___________________________</li>
+                                <br/><br/>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li>Take a Seat, by Team Double Double Mafia</li>
+                                <li><p:graphicImage name="/userhome/ddm.png" class="team-logo"/></li>
+                                <!-- Add a description of the team, with the member's names -->
+                                <li>___________________________</li>
+                            </h:form>
+                        </ul><br/>  
+                    </div>                    
+
+                    <div class="col-sm-9 " >
+                        <p:breadCrumb class="fillAllContentRight">
+                            <p:menuitem value="Categories" url="UserIndex.xhtml" />
+                            <p:menuitem value="New Event" url="#" />                            
+                        </p:breadCrumb>
+
+                        <div class="well fillAllContentRight">
+
+                            <div id="Event name" class="well">
+                                <h:outputText value="Your event name: " />
+                                <p:inputText value="#{eventBean.event.eventName}" label="EventName"/>
+                            </div>
+
+                            <div id="General information">
+                                <div class="col-sm-4">                                    
+                                    <p:graphicImage name="/newevent/placeholder.png" class="team-logo"/> <strong><h:outputText value="Location " /></strong>
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputText value="Street: " />
+                                        <p:inputText value="#{eventBean.event.street}" label="street"/>
+                                        <h:outputText value="City: " />
+                                        <p:inputText value="#{eventBean.event.city}" label="city"/>
+                                        <h:outputText value="State: " />
+                                        <p:inputText value="#{eventBean.event.state}" label="state"/>
+                                        <h:outputText value="Country: " />
+                                        <p:inputText value="#{eventBean.event.country}" label="country"/>
+                                    </h:panelGrid>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <br/>
+                                    <p:graphicImage name="/newevent/calendar.png" class="team-logo"/> <strong><h:outputText value="Date and Time Information " /></strong>
+                                    <h4></h4>
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputText value="Date: " />
+                                        <p:calendar id="popup" value="#{eventBean.event.date}" mindate="calwidget.today()" widgetVar="calwidget"/>
+                                        <h:outputText value="Doors open at: " />
+                                        <p:inputText value="#{eventBean.event.doorsOpenTime}"  label="doorsopen"/>
+                                        <h:outputText value="Event starts at: " />
+                                        <p:inputText value="#{eventBean.event.eventStartTime}"  label="eventStart"/>
+                                    </h:panelGrid>
+                                </div>    
+
+                                <div class="col-sm-4">
+                                    <br/>
+                                    <p:graphicImage name="/newevent/info.png" class="team-logo"/> <strong><h:outputText value="Additional Information " /></strong>
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputText value="Sponsors: " />
+                                        <p:inputText value="#{eventBean.event.sponsors}" label="sponsors"/>
+                                        <h:outputText value="Description: " />
+                                        <p:inputTextarea value="#{eventBean.event.description}"  label="description"/>
+                                    </h:panelGrid>
+                                </div>
+                            </div>
+
+                            <div id="SectorInformation text-center"> 
+
+                                <div class="col-sm-4">
+                                    <br/><br/>
+                                    <br/><br/>
+                                    <br/><br/>
+                                    <p:graphicImage name="/newevent/pyramid-chart.png" class="team-logo"/> <strong><h:outputText value="Define Sector Attributes " /></strong>
+                                    <h:panelGrid columns="2">
+                                        <h:outputText value="Sector Name: " />
+                                        <p:inputText value="#{eventBean.sector.sectorName}"  label="Sector Name"/>
+
+                                        <h:outputText value="Adult's ticket price: " />
+                                        <p:inputText value="#{eventBean.sector.ticketAdultPrice}" label="Adult's ticket price"  />
+
+                                        <h:outputText value="Student's/Senior's ticket price: " />
+                                        <p:inputText value="#{eventBean.sector.ticketSeniorStudentPrice}"  label="Student ticket price" />
+
+                                        <h:outputText value="Childrens's ticket price: " />
+                                        <p:inputText value="#{eventBean.sector.ticketChildrenPrice}"  label="Childrens's ticket price" />
+                                    </h:panelGrid>
+                                    <br/>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <br/><br/>
+                                    <br/><br/>
+                                    <br/><br/>
+                                    <p:graphicImage name="/newevent/distribution.png" class="team-logo"/> <strong><h:outputText value="Define Ticket Quantity's Attributes" /></strong><br/>
+                                    <input type="radio" onchange="hideRowsAndSeats(this)"  name="check" checked="true"/>No-seat section<br/>
+                                    <input type="radio" onchange="hideNoSeat(this)" name="check"/>Rows and Seats
+
+
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <br/><br/>
+                                    <br/><br/>
+                                    <br/><br/>
+                                    <div id="NoSeat" class="text-right">
+                                        <h:outputText value="Total quantity of tickets for this section: " />
+                                        <p:inputText value="#{eventBean.sector.quantityOfTickets}" required="false" label="ticketsOnSection"/><br/>
+                                    </div>
+
+                                    <div id="RowsAndSeats" class="text-right" style="visibility:hidden">
+                                        <h:outputText value="For this section: " /><br/>
+                                        <h:outputText value="Quantity of Rows: " />
+                                        <p:inputText value="#{eventBean.sector.quantityOfRows}" required="false" label="rowsQty"/><br/>
+                                        <h:outputText value="Seats per row: " />
+                                        <p:inputText value="#{eventBean.sector.quantityOfSeatsPerRow}" required="false" label="seatsPerRow"/>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <p:commandButton value="Add New Section" action="#{eventBean.addNewSector()}" update="neweventform" icon="fa fa-plus-circle "/>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+
+                                <br/><br/>
+                                <h:dataTable class="table" value="#{eventBean.sectors}" var="sector"  width="100%">
+                                    <h:column>
+                                        <f:facet name="header">Name</f:facet>
+                                            #{sector.sectorName}
+                                    </h:column>            
+                                    <h:column>
+                                        <f:facet name="header">General Tickets</f:facet>
+                                            #{sector.quantityOfTickets}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Number of rows</f:facet>
+                                            #{sector.quantityOfRows}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Seats per rows</f:facet>
+                                            #{sector.quantityOfSeatsPerRow}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Qty. Adult Tickets</f:facet>
+                                            #{sector.ticketAdultPrice}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Qty. Senior Tickets</f:facet>
+                                            #{sector.ticketSeniorStudentPrice}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Qty. Children Tickets</f:facet>
+                                            #{sector.ticketChildrenPrice}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Delete sector</f:facet>
+                                        <h:commandButton value="Delete" action="#{eventBean.deleteSector(sector)}"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="well">
+                                        <p:graphicImage name="/newevent/ribbon-banner-shape.png" class="team-logo"/> <strong><h:outputText value="Upload a banner for your event" /></strong>
+                                        <p:fileUpload value="#{eventBean.event.uploadedBanner}" mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/> 
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="well">
+                                        <p:graphicImage name="/newevent/hierarchical-structure.png" class="team-logo"/> <strong><h:outputText value="Upload structure image of structure" /></strong>
+                                        <p:fileUpload value="#{eventBean.event.uploadedImage}" mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/> 
+                                    </div>
+                                </div>                               
+                            </div>
+
+                            <h:commandButton value="Create Event" action="#{eventBean.addNewEvent()}"/>
+                        </div>  
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="container-fluid">
+                <p>Double Double Mafia team is a group made for Java EE classes, being the components Gabriel, Abinodh and Preethi</p>
+            </footer>
+        </h:form>
+    </body>
+</html>
